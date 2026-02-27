@@ -1,71 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>tar0bunny 🐰</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: century gothic, sans-serif;
-      background: linear-gradient(135deg, #fdf6ff, #e6d6ff);
-      text-align: center;
-      padding-top: 100px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✧ tar0bunny ✧</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: radial-gradient(ellipse at top, #fffafc 0%, #eae6f8 70%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: 'Century Gothic', sans-serif;
+  overflow-x: hidden;
+}
 
-    h1 {
-      color: #8e44ad;
-      font-size: 48px;
-    }
+.bg-deco {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.12;
+  animation: floatDeco linear infinite;
+}
 
-    p {
-      color: #555;
-      font-size: 18px;
-    }
+@keyframes floatDeco {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.12; }
+  90% { opacity: 0.12; }
+  100% { transform: translateY(-60px) rotate(360deg); opacity: 0; }
+}
 
-    .links {
-      margin-top: 40px;
-    }
+.terminal {
+  background: #f9f6ff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 620px;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(201,168,232,0.15), 0 0 100px rgba(255,183,197,0.05);
+  position: relative;
+  z-index: 1;
+}
 
-    a {
-      display: block;
-      margin: 15px auto;
-      width: 300px;
-      padding: 15px;
-      border-radius: 12px;
-      background: white;
-      text-decoration: none;
-      color: #6a5acd;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.2s ease;
-    }
+.titlebar {
+  background: linear-gradient(90deg, #f0e6ff, #e8e0ff, #dcd6ff);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #d6d0f0;
+}
 
-    a:hover {
-      transform: scale(1.05);
-    }
-  </style>
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.dot.red { background: #ffb7c5; }
+.dot.yellow { background: #ffe7a2; }
+.dot.green { background: #a8e6cf; }
+
+.titlebar span {
+  color: #c9a8e8;
+  font-size: 12px;
+  margin: 0 auto;
+  opacity: 0.7;
+  letter-spacing: 2px;
+}
+
+.body {
+  padding: 24px 24px 28px;
+  line-height: 1.75;
+  font-size: 14px;
+}
+
+.pink { color: #ffb7c5; }
+.purple { color: #c9a8e8; }
+.blue { color: #a8d8ea; }
+.gold { color: #ffd6e7; }
+.white { color: #fff0f5; }
+.bold { font-weight: 700; }
+
+/* Panels */
+.panel {
+  border-radius: 6px;
+  margin: 8px 0 16px;
+  position: relative;
+}
+.panel-purple {
+  border: 1px solid #c9a8e8;
+  box-shadow: 0 0 14px rgba(201,168,232,0.15), inset 0 0 20px rgba(201,168,232,0.02);
+}
+.panel-blue {
+  border: 1px solid #a8d8ea;
+  box-shadow: 0 0 14px rgba(168,216,234,0.15), inset 0 0 20px rgba(168,216,234,0.02);
+}
+.panel-title-center {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f9f6ff;
+  padding: 0 10px;
+  white-space: nowrap;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.panel-title-left {
+  position: absolute;
+  top: -11px;
+  left: 16px;
+  background: #f9f6ff;
+  padding: 0 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.panel-body {
+  padding: 16px 20px 12px;
+  margin-top: 4px;
+}
+
+.row { margin: 5px 0; }
+.corner {
+  position: absolute;
+  font-size: 10px;
+  opacity: 0.5;
+  line-height: 1;
+}
+.corner.tl { top: -6px; left: 6px; }
+.corner.tr { top: -6px; right: 6px; }
+.corner.bl { bottom: -6px; left: 6px; }
+.corner.br { bottom: -6px; right: 6px; }
+
+/* Buttons / Links */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: 1px solid;
+  transition: all 0.15s;
+  background: transparent;
+}
+.btn-pink { border-color: #ffb7c5; color: #ffb7c5; }
+.btn-pink:hover { background: rgba(255,183,197,0.15); box-shadow: 0 0 14px rgba(255,183,197,0.2); }
+
+.btn-purple { border-color: #c9a8e8; color: #c9a8e8; }
+.btn-purple:hover { background: rgba(201,168,232,0.15); box-shadow: 0 0 14px rgba(201,168,232,0.2); }
+
+.btn-blue { border-color: #a8d8ea; color: #a8d8ea; }
+.btn-blue:hover { background: rgba(168,216,234,0.15); box-shadow: 0 0 14px rgba(168,216,234,0.2); }
+
+</style>
 </head>
 <body>
 
-  <h1>tar0bunny 🐰</h1>
-  <p>python projects • game tools • cute experiments</p>
+<script>
+const decos = ['♡','✦','★','✿','◇','✧','♪'];
+for (let i = 0; i < 18; i++) {
+  const el = document.createElement('div');
+  el.className = 'bg-deco';
+  el.textContent = decos[Math.floor(Math.random() * decos.length)];
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.animationDuration = (12 + Math.random() * 20) + 's';
+  el.style.animationDelay = (-Math.random() * 20) + 's';
+  el.style.fontSize = (12 + Math.random() * 14) + 'px';
+  el.style.color = ['#FFB7C5','#C9A8E8','#A8D8EA'][Math.floor(Math.random()*3)];
+  document.body.appendChild(el);
+}
+</script>
 
-  <div class="links">
-    <a href="https://fortnite-challenge.onrender.com">
-      🎮 Fortnite Challenge Generator
-    </a>
-
-    <a href="#">
-      🎰 PokéSpin (coming soon)
-    </a>
-
-    <a href="#">
-      🎯 PokéBall Drop (coming soon)
-    </a>
-
-    <a href="https://github.com/tar0bunny">
-      💻 My GitHub
-    </a>
+<div class="terminal">
+  <div class="titlebar">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+    <span>✧ tar0bunny ✧</span>
   </div>
+  <div class="body">
+    <div class="panel panel-purple">
+      <div class="panel-title-center bold pink">🐰 WELCOME 🐰</div>
+      <div class="panel-body">
+        <p>Hello! I’m tar0bunny — a tiny dev hub for my Python projects and fun experiments.</p>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a href="https://fortnite-challenge.onrender.com" class="btn btn-pink">🎮 Fortnite Challenge</a>
+      <a href="#" class="btn btn-purple">🎰 PokéSlots (soon)</a>
+      <a href="#" class="btn btn-blue">🎯 PokéBall Drop (soon)</a>
+      <a href="https://github.com/tar0bunny" class="btn btn-pink">💻 GitHub</a>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

@@ -1,3 +1,7 @@
+
+Index · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,178 +9,215 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>✧ tar0bunny ✧</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Fredoka+One&display=swap');
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-  background: radial-gradient(ellipse at top, #fffafc 0%, #eae6f8 70%);
+  background: radial-gradient(ellipse at 30% 20%, #ffeef6 0%, #ede8ff 40%, #e4f3ff 100%);
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   min-height: 100vh;
   padding: 40px 20px;
-  font-family: 'Century Gothic', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
 
 .bg-deco {
   position: fixed;
   pointer-events: none;
-  opacity: 0.12;
   animation: floatDeco linear infinite;
+  user-select: none;
 }
-
 @keyframes floatDeco {
-  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.12; }
-  90% { opacity: 0.12; }
-  100% { transform: translateY(-60px) rotate(360deg); opacity: 0; }
+  0%   { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+  8%   { opacity: 0.18; }
+  92%  { opacity: 0.18; }
+  100% { transform: translateY(-80px) rotate(360deg); opacity: 0; }
 }
 
 .terminal {
-  background: #f9f6ff;
-  border-radius: 12px;
+  background: rgba(255,252,255,0.88);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
   width: 100%;
-  max-width: 620px;
+  max-width: 560px;
   overflow: hidden;
-  box-shadow: 0 0 50px rgba(201,168,232,0.15), 0 0 100px rgba(255,183,197,0.05);
+  box-shadow:
+    0 4px 40px rgba(201,168,232,0.18),
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 0 0 1px rgba(209,186,240,0.35);
   position: relative;
   z-index: 1;
+  animation: popIn 0.55s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .titlebar {
-  background: linear-gradient(90deg, #f0e6ff, #e8e0ff, #dcd6ff);
-  padding: 10px 14px;
+  background: linear-gradient(90deg, #f5e8ff, #ede5ff, #e5deff);
+  padding: 11px 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid #d6d0f0;
+  gap: 7px;
+  border-bottom: 1px solid rgba(209,186,240,0.4);
 }
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-.dot.red { background: #ffb7c5; }
-.dot.yellow { background: #ffe7a2; }
-.dot.green { background: #a8e6cf; }
-
-.titlebar span {
-  color: #c9a8e8;
-  font-size: 12px;
-  margin: 0 auto;
-  opacity: 0.7;
-  letter-spacing: 2px;
-}
-
-.body {
-  padding: 24px 24px 28px;
-  line-height: 1.75;
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red    { background: #ffb7c5; }
+.dot.yellow { background: #ffd6a2; }
+.dot.green  { background: #b5eacf; }
+.titlebar-title {
+  flex: 1;
+  text-align: center;
+  color: #c4a0e0;
+  font-family: 'Fredoka One', cursive;
   font-size: 14px;
+  letter-spacing: 2px;
+  padding-right: 39px;
 }
 
-.pink { color: #ffb7c5; }
-.purple { color: #c9a8e8; }
-.blue { color: #a8d8ea; }
-.gold { color: #ffd6e7; }
-.white { color: #fff0f5; }
-.bold { font-weight: 700; }
+.body { padding: 32px 36px 40px; }
 
-/* Panels */
-.panel {
-  border-radius: 6px;
-  margin: 8px 0 16px;
+.welcome-panel {
+  border: 1.5px solid rgba(201,168,232,0.4);
+  border-radius: 12px;
+  padding: 20px 20px 16px;
+  margin-bottom: 22px;
   position: relative;
+  background: linear-gradient(135deg, rgba(255,240,248,0.55) 0%, rgba(240,235,255,0.45) 100%);
 }
-.panel-purple {
-  border: 1px solid #c9a8e8;
-  box-shadow: 0 0 14px rgba(201,168,232,0.15), inset 0 0 20px rgba(201,168,232,0.02);
-}
-.panel-blue {
-  border: 1px solid #a8d8ea;
-  box-shadow: 0 0 14px rgba(168,216,234,0.15), inset 0 0 20px rgba(168,216,234,0.02);
-}
-.panel-title-center {
+.welcome-label-wrap {
   position: absolute;
-  top: -11px;
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: #f9f6ff;
-  padding: 0 10px;
+  padding: 0 8px;
+  background: #faf7ff;
+  border-radius: 4px;
   white-space: nowrap;
-  font-size: 13px;
-  letter-spacing: 1px;
 }
-.panel-title-left {
-  position: absolute;
-  top: -11px;
-  left: 16px;
-  background: #f9f6ff;
-  padding: 0 10px;
+.welcome-label {
+  font-family: 'Fredoka One', cursive;
   font-size: 13px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ffb7c5, #c9a8e8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.panel-body {
-  padding: 16px 20px 12px;
-  margin-top: 4px;
+.welcome-panel p {
+  color: #9180a8;
+  font-size: 14px;
+  line-height: 1.75;
+  text-align: center;
+}
+.welcome-panel p strong {
+  color: #c9a8e8;
 }
 
-.row { margin: 5px 0; }
-.corner {
-  position: absolute;
-  font-size: 10px;
-  opacity: 0.5;
-  line-height: 1;
-}
-.corner.tl { top: -6px; left: 6px; }
-.corner.tr { top: -6px; right: 6px; }
-.corner.bl { bottom: -6px; left: 6px; }
-.corner.br { bottom: -6px; right: 6px; }
-
-/* Buttons / Links */
-.btn-row {
+.divider {
   display: flex;
+  align-items: center;
   gap: 10px;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  margin: 0 0 18px;
+  color: #cec0de;
+  font-size: 10px;
+  letter-spacing: 2px;
 }
-.btn {
+.divider::before, .divider::after {
+  content: '';
   flex: 1;
-  min-width: 80px;
-  padding: 10px 0;
-  border-radius: 8px;
-  font-family: 'Century Gothic', sans-serif;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,232,0.3), transparent);
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1px;
   cursor: pointer;
-  border: 1px solid;
-  transition: all 0.15s;
-  background: transparent;
+  border: 1.5px solid transparent;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
 }
-.btn-pink { border-color: #ffb7c5; color: #ffb7c5; }
-.btn-pink:hover { background: rgba(255,183,197,0.15); box-shadow: 0 0 14px rgba(255,183,197,0.2); }
+.btn-icon { font-size: 16px; flex-shrink: 0; line-height: 1; }
+.btn:hover  { transform: translateY(-3px) scale(1.025); }
+.btn:active { transform: translateY(0) scale(0.97); }
 
-.btn-purple { border-color: #c9a8e8; color: #c9a8e8; }
-.btn-purple:hover { background: rgba(201,168,232,0.15); box-shadow: 0 0 14px rgba(201,168,232,0.2); }
+.btn-pink {
+  background: linear-gradient(145deg, #fff2f5, #ffe4ee);
+  border-color: rgba(255,183,197,0.65);
+  color: #c85a72;
+  box-shadow: 0 2px 14px rgba(255,183,197,0.22), inset 0 1px 0 rgba(255,255,255,0.85);
+}
+.btn-pink:hover { box-shadow: 0 7px 22px rgba(255,183,197,0.38), inset 0 1px 0 rgba(255,255,255,0.85); }
 
-.btn-blue { border-color: #a8d8ea; color: #a8d8ea; }
-.btn-blue:hover { background: rgba(168,216,234,0.15); box-shadow: 0 0 14px rgba(168,216,234,0.2); }
+.btn-purple {
+  background: linear-gradient(145deg, #f8f1ff, #ede4ff);
+  border-color: rgba(201,168,232,0.65);
+  color: #9668c8;
+  box-shadow: 0 2px 14px rgba(201,168,232,0.22), inset 0 1px 0 rgba(255,255,255,0.85);
+}
+.btn-purple:hover { box-shadow: 0 7px 22px rgba(201,168,232,0.38), inset 0 1px 0 rgba(255,255,255,0.85); }
+
+.btn-blue {
+  background: linear-gradient(145deg, #f1f9ff, #e2f4ff);
+  border-color: rgba(168,216,234,0.65);
+  color: #4e9ab5;
+  box-shadow: 0 2px 14px rgba(168,216,234,0.22), inset 0 1px 0 rgba(255,255,255,0.85);
+}
+.btn-blue:hover { box-shadow: 0 7px 22px rgba(168,216,234,0.38), inset 0 1px 0 rgba(255,255,255,0.85); }
+
+.btn-soon {
+  cursor: default;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.soon-badge {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.65;
+  letter-spacing: 0.5px;
+}
+
+.btn-full { grid-column: 1 / -1; }
+
 
 </style>
 </head>
 <body>
 
 <script>
-const decos = ['♡','✦','★','✿','◇','✧','♪'];
-for (let i = 0; i < 18; i++) {
+const decos = ['♡','✦','★','✿','◇','✧','♪','⋆','˚','·'];
+for (let i = 0; i < 20; i++) {
   const el = document.createElement('div');
   el.className = 'bg-deco';
   el.textContent = decos[Math.floor(Math.random() * decos.length)];
   el.style.left = Math.random() * 100 + 'vw';
-  el.style.animationDuration = (12 + Math.random() * 20) + 's';
-  el.style.animationDelay = (-Math.random() * 20) + 's';
-  el.style.fontSize = (12 + Math.random() * 14) + 'px';
-  el.style.color = ['#FFB7C5','#C9A8E8','#A8D8EA'][Math.floor(Math.random()*3)];
+  el.style.animationDuration = (14 + Math.random() * 22) + 's';
+  el.style.animationDelay = (-Math.random() * 24) + 's';
+  el.style.fontSize = (10 + Math.random() * 14) + 'px';
+  el.style.color = ['#FFB7C5','#C9A8E8','#A8D8EA','#f9c0d5'][Math.floor(Math.random()*4)];
   document.body.appendChild(el);
 }
 </script>
@@ -186,21 +227,39 @@ for (let i = 0; i < 18; i++) {
     <div class="dot red"></div>
     <div class="dot yellow"></div>
     <div class="dot green"></div>
-    <span>✧ tar0bunny ✧</span>
+    <div class="titlebar-title">✧ tar0bunny ✧</div>
   </div>
+
   <div class="body">
-    <div class="panel panel-purple">
-      <div class="panel-title-center bold pink">🐰 WELCOME 🐰</div>
-      <div class="panel-body">
-        <p>Hello! I’m tar0bunny — a tiny dev hub for my Python projects and fun experiments.</p>
+    </div>
+    <div class="welcome-panel">
+      <div class="welcome-label-wrap">
+        <span class="welcome-label">🐰 WELCOME 🐰</span>
       </div>
+      <p>Hello! This is a tiny dev hub for my Python projects and fun experiments. ✨</p>
     </div>
 
-    <div class="btn-row">
-      <a href="https://fortnite-challenge.onrender.com" class="btn btn-pink">🎮 Fortnite Challenge</a>
-      <a href="#" class="btn btn-purple">🎰 PokéSlots (soon)</a>
-      <a href="#" class="btn btn-blue">🎯 PokéBall Drop (soon)</a>
-      <a href="https://github.com/tar0bunny" class="btn btn-pink">💻 GitHub</a>
+    <div class="divider">✦ projects ✦</div>
+
+    <div class="btn-grid">
+      <a href="https://fortnite-challenge.onrender.com" class="btn btn-pink">
+        <span class="btn-icon">🎮</span> Fortnite Challenge
+      </a>
+      <a href="#" class="btn btn-purple btn-soon">
+        <span class="btn-icon">🎰</span> PokéSlots
+        <span class="soon-badge">soon~</span>
+      </a>
+      <a href="#" class="btn btn-pink btn-soon">
+        <span class="btn-icon">🧋</span> Boba Frenzy
+        <span class="soon-badge">soon~</span>
+      </a>
+      <a href="#" class="btn btn-blue btn-soon">
+        <span class="btn-icon">🎯</span> PokéBall Drop
+        <span class="soon-badge">soon~</span>
+      </a>
+      <a href="https://github.com/tar0bunny" class="btn btn-pink btn-full">
+        <span class="btn-icon">💻</span> GitHub
+      </a>
     </div>
   </div>
 </div>
